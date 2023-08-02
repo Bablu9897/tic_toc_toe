@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic tac game</title>
+	<style type="text/css">
+		.box
+		{
+			background: pink;
+			height: 390px;
+			width: 376px;
+			margin: auto;
+		}
+		#btn1,#btn2,#btn3,#btn4,#btn5,#btn6,#btn7,#btn8,#btn9
+		{
+			height: 130px;
+			width:125px;
+			float:left;
+		}
+		h1
+		{
+			background-color: gray;
+			width:300px; 
+			height: 50px;
+
+		}
+		.player_box
+		{
+			float:right;
+			background-color:#818ed6;
+			color:white;
+			height:125px;
+			width:295px;
+			margin-right: 40px;
+
+		}
+		.player_box table
+		{
+			height: 100%;
+			width: 100%;
+		}
+		.player_box table th,td
+		{
+			padding:10px;
+		}
+		.player_form 
+		{
+			background-color:#818ed6;
+			color:white;
+			float:left;
+			margin-left:30px;
+		}
+		.player_form table tr td input
+		{
+			padding: 5px;
+			color: red;
+			font-weight: 700;
+			
+		}
+	</style>
+</head>
+<body bgcolor="pink" >
+	<br>
+	<center><i><h1><strong style="color:red">Tic</strong>&nbsp;<strong style="color:yellow">tac</strong>&nbsp;<strong style="color:green">toe</strong></h1></i></center>
+	<div class="player_box">
+		<table border="2">
+			<thead><th >(X) Player 1</th><th>(O) Player 2</th></thead>
+			<tbody><td id="chance_clr1" style="background-color:gray; font-size: 20px;"><strong id="pr_nm1" >unname 1</strong></td><td id="chance_clr2" style="background-color:gray; font-size: 20px;"><strong id="pr_nm2">unname 2</strong></td></tbody>
+		</table>
+	</div>
+	<div class="player_form">
+			<table border="2">
+				<tr><td>(X) Name Player 1</td><td><input type="text" maxlength="12" id="user1"></td></tr>
+				<tr><td>(O) Name Player 2</td><td><input type="text" id="user2" maxlength="12"></td></tr>
+				<tr><td colspan="2" ><center><button onclick="sub_name()" style="background-color:#e477f7;width:180px;border-radius: 30px;font-style: italic;"><h3>Go..</h3></button></center></td></tr>
+
+			</table>
+	</div>
+	<div class="box">
+		<center>
+			<button  id="btn1" onclick="btn_click(this.id)"></button>
+			<button  id="btn2" onclick="btn_click(this.id)"></button>
+			<button  id="btn3" onclick="btn_click(this.id)"></button>
+			<button  id="btn4" onclick="btn_click(this.id)"></button>
+			<button  id="btn5" onclick="btn_click(this.id)"></button>
+			<button  id="btn6" onclick="btn_click(this.id)"></button>
+			<button  id="btn7" onclick="btn_click(this.id)"></button>
+			<button  id="btn8" onclick="btn_click(this.id)"></button>
+			<button  id="btn9" onclick="btn_click(this.id)"></button>
+		</center>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	// alert("Please Enter Your Name First");
+	setInterval(call_me,2000);
+var cont =1;
+	function call_me()
+	{
+		switch(cont)
+		{
+			case 1:document.body.style.background="green";break;
+			case 2:document.body.style.background="red";break;
+			case 3:document.body.style.background="yellow";break;
+			case 4:document.body.style.background="pink";break;
+			case 5:document.body.style.background="orange";break;
+			default:cont =0;break;
+		}
+		cont++;
+
+	}
+var nm1="Player 1",nm2="Player 2";
+	function sub_name()
+	{
+		nm1= document.getElementById("user1").value;
+		nm2= document.getElementById("user2").value;
+		document.getElementById("pr_nm1").innerHTML=nm1;
+		document.getElementById("pr_nm2").innerHTML=nm2;
+		document.getElementById("user2").value = "";
+		document.getElementById("user1").value = "";
+		alert("Lets Start The Game.....");
+
+	}
+setInterval(check_chance,200);
+
+var btn_no = 2;
+	function btn_click(args)
+	{
+		if(btn_no%2 == 0)
+		{
+			document.getElementById(args).innerHTML="<h2>X</h2>";
+			document.getElementById(args).value="X";
+		}
+		else
+		{
+			document.getElementById(args).innerHTML="<h2>O</h2>";
+			document.getElementById(args).value="O";
+
+
+		}
+		btn_no++;
+		var btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9;
+		btn1 = document.getElementById("btn1").value;
+		btn2 = document.getElementById("btn2").value;
+		btn3 = document.getElementById("btn3").value;
+		btn4 = document.getElementById("btn4").value;
+		btn5 = document.getElementById("btn5").value;
+		btn6 = document.getElementById("btn6").value;
+		btn7 = document.getElementById("btn7").value;
+		btn8 = document.getElementById("btn8").value;
+		btn9 = document.getElementById("btn9").value;
+		if(btn1 == 'X' && btn2 == 'X' && btn3 == 'X' || btn4 == 'X' && btn5 == 'X' && btn6 == 'X' || btn7 == 'X' && btn8 == 'X' && btn9 == 'X' || btn1 == 'X' && btn4 == 'X' && btn7 == 'X' || btn2 == 'X' && btn5 == 'X' && btn8 == 'X' || btn3 == 'X' && btn6 == 'X' && btn9 == 'X' || btn1 == 'X' && btn5 == 'X' && btn9 == 'X' || btn3 == 'X' && btn5 == 'X' && btn7 == 'X'  )
+		{
+			alert("Player "+nm1+" is Winner");
+			document.write("<center><h1>Conguratulation "+nm1+" are you winner</h1></center>");
+		}
+		if(btn1 == 'O' && btn2 == 'O' && btn3 == 'O' || btn4 == 'O' && btn5 == 'O' && btn6 == 'O' || btn7 == 'O' && btn8 == 'O' && btn9 == 'O' || btn1 == 'O' && btn4 == 'O' && btn7 == 'O' || btn2 == 'O' && btn5 == 'O' && btn8 == 'O' || btn3 == 'O' && btn6 == 'O' && btn9 == 'O' || btn1 == 'O' && btn5 == 'O' && btn9 == 'O' || btn3 == 'O' && btn5 == 'O' && btn7 == 'O'  )
+		{
+			alert("player "+nm2+" is Winner");
+			document.write("<center><h1>Conguratulation "+nm2+" are you winner</h1></center>");
+ 		}
+
+	}
+	function check_chance()
+	{
+		if(btn_no%2 == 0)
+		{
+			document.getElementById("chance_clr1").style.background="blue";
+			document.getElementById("chance_clr2").style.background="";
+
+		}
+		else
+		{			
+			document.getElementById("chance_clr2").style.background="blue";
+			document.getElementById("chance_clr1").style.background="";
+		}
+	}
+	
+</script>
